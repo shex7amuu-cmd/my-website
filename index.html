@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Pro Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+}
+
+header{
+padding:20px;
+text-align:center;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:1px solid #222;
+border-radius:12px;
+padding:15px;
+}
+
+input,button{
+width:100%;
+padding:10px;
+margin-top:8px;
+border:none;
+border-radius:8px;
+}
+
+button{
+background:#00ffff;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:10px;
+color:#00ffff;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🛡️ Cyber Security Pro Dashboard</h1>
+<p>All-in-one security learning tools</p>
+</header>
+
+<div class="container">
+
+<!-- PASSWORD SCAN -->
+<div class="card">
+<h3>🔐 Password Scanner</h3>
+<input id="pass" placeholder="Enter password">
+<button onclick="scanPass()">Scan</button>
+<div class="result" id="r1"></div>
+</div>
+
+<!-- ACCOUNT SAFETY CHECK (SIMULATION) -->
+<div class="card">
+<h3>👤 Account Safety Check</h3>
+<input id="acc" placeholder="Enter username/email">
+<button onclick="accCheck()">Check</button>
+<div class="result" id="r2"></div>
+</div>
+
+<!-- PHISHING CHECK -->
+<div class="card">
+<h3>⚠️ Phishing Checker</h3>
+<input id="link" placeholder="Enter link">
+<button onclick="phish()">Analyze</button>
+<div class="result" id="r3"></div>
+</div>
+
+<!-- HASH TOOL -->
+<div class="card">
+<h3>🔑 Base64 Hash</h3>
+<input id="txt" placeholder="Text">
+<button onclick="hash()">Generate</button>
+<div class="result" id="r4"></div>
+</div>
+
+<!-- CYBER TIPS -->
+<div class="card">
+<h3>🧠 Cyber Tips</h3>
+<button onclick="tips()">Show Tip</button>
+<div class="result" id="r5"></div>
+</div>
+
+</div>
+
+<script>
+
+// PASSWORD SCANNER (SAFE)
+function scanPass(){
+let p=document.getElementById("pass").value;
+
+if(p.length<6){
+r1.innerText="❌ Weak password - easy to guess";
+}
+else if(p.length<10){
+r1.innerText="⚠️ Medium strength - improve it";
+}
+else{
+r1.innerText="✅ Strong password - safe";
+}
+}
+
+// ACCOUNT CHECK (SIMULATION ONLY)
+function accCheck(){
+let a=document.getElementById("acc").value;
+
+if(a.includes("@")){
+r2.innerText="🟡 Account format OK\n⚠️ Always enable 2FA for safety";
+}else{
+r2.innerText="❌ Invalid format";
+}
+}
+
+// PHISHING CHECK (FAKE SIM)
+function phish(){
+let l=document.getElementById("link").value;
+
+if(l.includes("http")){
+r3.innerText="⚠️ Warning: link detected\nAlways verify before clicking!";
+}else{
+r3.innerText="❌ No valid link detected";
+}
+}
+
+// HASH TOOL
+function hash(){
+let t=document.getElementById("txt").value;
+r4.innerText=btoa(t);
+}
+
+// CYBER TIPS
+function tips(){
+let arr=[
+"Use strong passwords 🔐",
+"Never reuse passwords ⚠️",
+"Enable 2FA 🛡️",
+"Avoid unknown links 🌐",
+"Keep software updated 🔄",
+"Don’t trust random messages 📩"
+];
+r5.innerText=arr[Math.floor(Math.random()*arr.length)];
+}
+
+</script>
+
+</body>
+</html>
